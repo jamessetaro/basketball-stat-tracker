@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basketball Stat Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .stat-tracker {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .stat-row h3 {
+      margin: 0;
+      flex: 1;
+      text-align: left;
+    }
+    .stat-row .buttons {
+      display: flex;
+      align-items: center;
+    }
+    .stat-row button {
+      font-size: 18px;
+      padding: 10px;
+      width: 40px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    .stat-row button:hover {
+      background-color: #0056b3;
+    }
+    .stat-row .value {
+      font-size: 24px;
+      font-weight: bold;
+      width: 50px;
+      text-align: center;
+    }
+    #reset-stats {
+      display: block;
+      width: 100%;
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #reset-stats:hover {
+      background-color: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Basketball Stat Tracker</h1>
+  <div class="stat-tracker">
+    <!-- Points -->
+    <div class="stat-row">
+      <h3>Points</h3>
+      <div class="buttons">
+        <button onclick="decrement('points')">-</button>
+        <div class="value" id="points">0</div>
+        <button onclick="increment('points')">+</button>
+      </div>
+    </div>
+    <!-- Rebounds -->
+    <div class="stat-row">
+      <h3>Rebounds</h3>
+      <div class="buttons">
+        <button onclick="decrement('rebounds')">-</button>
+        <div class="value" id="rebounds">0</div>
+        <button onclick="increment('rebounds')">+</button>
+      </div>
+    </div>
+    <!-- Assists -->
+    <div class="stat-row">
+      <h3>Assists</h3>
+      <div class="buttons">
+        <button onclick="decrement('assists')">-</button>
+        <div class="value" id="assists">0</div>
+        <button onclick="increment('assists')">+</button>
+      </div>
+    </div>
+    <!-- Steals -->
+    <div class="stat-row">
+      <h3>Steals</h3>
+      <div class="buttons">
+        <button onclick="decrement('steals')">-</button>
+        <div class="value" id="steals">0</div>
+        <button onclick="increment('steals')">+</button>
+      </div>
+    </div>
+    <!-- Shots Attempted -->
+    <div class="stat-row">
+      <h3>Shots Attempted</h3>
+      <div class="buttons">
+        <button onclick="decrement('shots')">-</button>
+        <div class="value" id="shots">0</div>
+        <button onclick="increment('shots')">+</button>
+      </div>
+    </div>
+    <!-- Fouls -->
+    <div class="stat-row">
+      <h3>Fouls</h3>
+      <div class="buttons">
+        <button onclick="decrement('fouls')">-</button>
+        <div class="value" id="fouls">0</div>
+        <button onclick="increment('fouls')">+</button>
+      </div>
+    </div>
+  </div>
+  <button id="reset-stats" onclick="resetStats()">Reset All Stats</button>
+
+  <script>
+    // Increment stat value
+    function increment(statId) {
+      const statElement = document.getElementById(statId);
+      const currentValue = parseInt(statElement.textContent, 10);
+      statElement.textContent = currentValue + 1;
+    }
+
+    // Decrement stat value
+    function decrement(statId) {
+      const statElement = document.getElementById(statId);
+      const currentValue = parseInt(statElement.textContent, 10);
+      if (currentValue > 0) {
+        statElement.textContent = currentValue - 1;
+      }
+    }
+
+    // Reset all stats
+    function resetStats() {
+      const statElements = document.querySelectorAll('.value');
+      statElements.forEach(stat => {
+        stat.textContent = '0';
+      });
+    }
+  </script>
+</body>
+</html>
